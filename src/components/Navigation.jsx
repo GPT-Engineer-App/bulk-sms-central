@@ -8,7 +8,10 @@ function Navigation() {
         <Link as={RouterLink} to="/" color="white" mr={4}>
           Home
         </Link>
-        <Link as={RouterLink} to="/dashboard" color="white">
+        <Link as={RouterLink} to="/dashboard" color="white" mr={4}>
+          Dashboard
+        </Link>
+        <Link as={RouterLink} to="/login" color="white">
           Dashboard
         </Link>
       </Flex>
