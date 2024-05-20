@@ -3,26 +3,27 @@ import { Container, VStack, Heading, Input, Button, Textarea, Text, HStack, Icon
 import { FaSms } from "react-icons/fa";
 
 const Index = () => {
+  const [fromNumber, setFromNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
   const toast = useToast();
 
   const handleSendSMS = () => {
-    if (phoneNumber && message) {
-      // Simulate sending SMS
+    if (fromNumber && phoneNumber && message) {
       toast({
         title: "SMS Sent",
-        description: `Message sent to ${phoneNumber}`,
+        description: `Message sent from ${fromNumber} to ${phoneNumber}`,
         status: "success",
         duration: 5000,
         isClosable: true,
       });
+      setFromNumber("");
       setPhoneNumber("");
       setMessage("");
     } else {
       toast({
         title: "Error",
-        description: "Please enter both phone number and message.",
+        description: "Please enter from number, phone number, and message.",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -36,6 +37,7 @@ const Index = () => {
         <Heading as="h1" size="xl" mb={6}>
           Bulk SMS Service
         </Heading>
+        <Input placeholder="Enter from number" value={fromNumber} onChange={(e) => setFromNumber(e.target.value)} size="lg" />
         <Input placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} size="lg" />
         <Textarea placeholder="Enter your message" value={message} onChange={(e) => setMessage(e.target.value)} size="lg" />
         <HStack spacing={4}>
